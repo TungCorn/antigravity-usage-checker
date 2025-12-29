@@ -29,3 +29,6 @@ debug_output.txt
 
 # Build output
 dist/
+
+# Release notes (temporary)
+RELEASE_NOTES.md
