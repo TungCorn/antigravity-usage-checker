@@ -1,6 +1,6 @@
 ﻿# Antigravity Usage Checker
 
-🚀 Check your Antigravity AI quota from terminal
+🚀 Check your Antigravity AI usage quota from terminal
 
 ![Version](https://img.shields.io/badge/version-0.2.0-blue)
 ![Go](https://img.shields.io/badge/Go-1.21+-00ADD8?logo=go)
@@ -8,10 +8,21 @@
 
 ## 🇬🇧 English
 
-### Quick Start
+### Installation
 
-1. **Download** [`agusage.exe`](https://github.com/TungCorn/antigravity-usage-checker/releases/latest)
-2. **Run** `.\agusage.exe`
+1. **Download** [`antigravity-usage-checker-v0.2.0-windows.zip`](https://github.com/TungCorn/antigravity-usage-checker/releases/latest)
+
+2. **Extract** the zip file
+
+3. **Run install script** (PowerShell):
+```powershell
+powershell -ExecutionPolicy Bypass -File install.ps1
+```
+
+4. **Restart terminal** and run:
+```bash
+agusage
+```
 
 > ⚠️ Antigravity must be running
 
@@ -22,27 +33,30 @@
 ### Commands
 
 ```bash
-.\agusage.exe          # Show quota
-.\agusage.exe --json   # JSON output
-.\agusage.exe --help   # Help
-```
-
-### Build from Source
-
-```bash
-git clone https://github.com/TungCorn/antigravity-usage-checker.git
-cd antigravity-usage-checker
-go build -o agusage.exe ./cmd/agusage
+agusage          # Show quota
+agusage --json   # JSON output
+agusage --help   # Help
 ```
 
 ---
 
 ## 🇻🇳 Tiếng Việt
 
-### Bắt đầu nhanh
+### Cài đặt
 
-1. **Tải** [`agusage.exe`](https://github.com/TungCorn/antigravity-usage-checker/releases/latest)
-2. **Chạy** `.\agusage.exe`
+1. **Tải** [`antigravity-usage-checker-v0.2.0-windows.zip`](https://github.com/TungCorn/antigravity-usage-checker/releases/latest)
+
+2. **Giải nén** file zip
+
+3. **Chạy script cài đặt** (PowerShell):
+```powershell
+powershell -ExecutionPolicy Bypass -File install.ps1
+```
+
+4. **Khởi động lại terminal** và chạy:
+```bash
+agusage
+```
 
 > ⚠️ Antigravity phải đang chạy
 
@@ -53,17 +67,9 @@ go build -o agusage.exe ./cmd/agusage
 ### Các lệnh
 
 ```bash
-.\agusage.exe          # Xem quota
-.\agusage.exe --json   # Xuất JSON
-.\agusage.exe --help   # Trợ giúp
-```
-
-### Build từ source
-
-```bash
-git clone https://github.com/TungCorn/antigravity-usage-checker.git
-cd antigravity-usage-checker
-go build -o agusage.exe ./cmd/agusage
+agusage          # Xem quota
+agusage --json   # Xuất JSON
+agusage --help   # Trợ giúp
 ```
 
 ---
@@ -77,6 +83,3 @@ MIT © 2024
 <p align="center">
   <b>If you find this useful, give it a ⭐!</b>
 </p>
-
-
-
