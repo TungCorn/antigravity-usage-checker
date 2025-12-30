@@ -2,7 +2,7 @@
 
 🚀 Check your Antigravity AI usage quota from terminal
 
-![Version](https://img.shields.io/badge/version-0.2.0-blue)
+![Version](https://img.shields.io/badge/version-0.3.0-blue)
 ![Go](https://img.shields.io/badge/Go-1.21+-00ADD8?logo=go)
 ![Platform](https://img.shields.io/badge/platform-Windows-lightgrey)
 
@@ -10,7 +10,7 @@
 
 ### Installation
 
-1. **Download** [`antigravity-usage-checker-v0.2.0-windows.zip`](https://github.com/TungCorn/antigravity-usage-checker/releases/latest)
+1. **Download** [`antigravity-usage-checker-windows.zip`](https://github.com/TungCorn/antigravity-usage-checker/releases/latest)
 
 2. **Extract** the zip file
 
@@ -23,6 +23,11 @@ powershell -ExecutionPolicy Bypass -File install.ps1
 ```bash
 agusage
 ```
+
+> 💡 **Tip**: If `agusage` is not found, run this to refresh PATH:
+> ```powershell
+> $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
+> ```
 
 > ⚠️ Antigravity must be running
 
@@ -44,7 +49,7 @@ agusage --help   # Help
 
 ### Cài đặt
 
-1. **Tải** [`antigravity-usage-checker-v0.2.0-windows.zip`](https://github.com/TungCorn/antigravity-usage-checker/releases/latest)
+1. **Tải** [`antigravity-usage-checker-windows.zip`](https://github.com/TungCorn/antigravity-usage-checker/releases/latest)
 
 2. **Giải nén** file zip
 
@@ -57,6 +62,11 @@ powershell -ExecutionPolicy Bypass -File install.ps1
 ```bash
 agusage
 ```
+
+> 💡 **Mẹo**: Nếu lệnh `agusage` không tìm thấy, chạy lệnh này để refresh PATH:
+> ```powershell
+> $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
+> ```
 
 > ⚠️ Antigravity phải đang chạy
 
