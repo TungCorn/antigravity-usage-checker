@@ -13,8 +13,8 @@
 1. **Download** [`antigravity-usage-checker-windows.zip`](https://github.com/TungCorn/antigravity-usage-checker/releases/latest)
 
 2. **Extract** the zip file
-
-3. **Run install script** (PowerShell):
+   
+3. **Open terminal** in the extracted folder and run:
 ```powershell
 powershell -ExecutionPolicy Bypass -File install.ps1
 ```
@@ -53,7 +53,7 @@ agusage --help   # Help
 
 2. **Giải nén** file zip
 
-3. **Chạy script cài đặt** (PowerShell):
+3. **Mở terminal** tại thư mục vừa giải nén và chạy:
 ```powershell
 powershell -ExecutionPolicy Bypass -File install.ps1
 ```
