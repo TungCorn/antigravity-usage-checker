@@ -33,3 +33,6 @@ dist/
 # Release notes (temporary)
 RELEASE_NOTES.md
 test.md
+
+# Build artifacts
+*.zip
