@@ -13,7 +13,7 @@
 Run this in **PowerShell**:
 
 ```powershell
-iwr https://raw.githubusercontent.com/TungCorn/antigravity-usage-checker/main/install.ps1 -useb | iex
+iwr https://raw.githubusercontent.com/TungCorn/antigravity-usage-checker/main/install.ps1 -OutFile $env:TEMP\install.ps1; & $env:TEMP\install.ps1
 ```
 
 ### Manual Install
@@ -45,7 +45,7 @@ agusage --help   # Help
 Chạy lệnh sau trong **PowerShell**:
 
 ```powershell
-iwr https://raw.githubusercontent.com/TungCorn/antigravity-usage-checker/main/install.ps1 -useb | iex
+iwr https://raw.githubusercontent.com/TungCorn/antigravity-usage-checker/main/install.ps1 -OutFile $env:TEMP\install.ps1; & $env:TEMP\install.ps1
 ```
 
 ### Cài thủ công
