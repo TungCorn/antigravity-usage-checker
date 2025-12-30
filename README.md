@@ -16,6 +16,11 @@ Run this in **PowerShell**:
 iwr https://raw.githubusercontent.com/TungCorn/antigravity-usage-checker/main/install.ps1 -OutFile $env:TEMP\install.ps1; . $env:TEMP\install.ps1
 ```
 
+Then run:
+```powershell
+agusage
+```
+
 ### Manual Install
 
 1. **Download** [`antigravity-usage-checker-windows.zip`](https://github.com/TungCorn/antigravity-usage-checker/releases/latest)
@@ -46,6 +51,11 @@ Chạy lệnh sau trong **PowerShell**:
 
 ```powershell
 iwr https://raw.githubusercontent.com/TungCorn/antigravity-usage-checker/main/install.ps1 -OutFile $env:TEMP\install.ps1; . $env:TEMP\install.ps1
+```
+
+Sau đó chạy:
+```powershell
+agusage
 ```
 
 ### Cài thủ công
