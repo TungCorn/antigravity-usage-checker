@@ -4,7 +4,9 @@
 
 ![Version](https://img.shields.io/badge/version-0.4.0-blue)
 ![Go](https://img.shields.io/badge/Go-1.21+-00ADD8?logo=go)
-![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-blue)
+![Windows](https://img.shields.io/badge/Windows-0078D6?style=flat&logo=windows&logoColor=white)
+![macOS](https://img.shields.io/badge/macOS-000000?style=flat&logo=apple&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black)
 [![CI](https://github.com/TungCorn/antigravity-usage-checker/actions/workflows/ci.yml/badge.svg)](https://github.com/TungCorn/antigravity-usage-checker/actions/workflows/ci.yml)
 
 ## 🇬🇧 English
