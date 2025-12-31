@@ -4,6 +4,9 @@
 *.dll
 *.so
 *.dylib
+/agusage
+/agusage-linux
+/agusage-macos
 
 # Test binary
 *.test
