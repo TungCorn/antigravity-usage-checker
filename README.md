@@ -2,7 +2,7 @@
 
 🚀 Check your Antigravity AI usage quota from terminal
 
-![Version](https://img.shields.io/badge/version-0.4.0-blue)
+![Version](https://img.shields.io/badge/version-0.5.0-blue)
 ![Go](https://img.shields.io/badge/Go-1.21+-00ADD8?logo=go)
 ![Windows](https://img.shields.io/badge/Windows-0078D6?style=flat&logo=windows&logoColor=white)
 ![macOS](https://img.shields.io/badge/macOS-000000?style=flat&logo=apple&logoColor=white)
@@ -28,6 +28,10 @@ Then run:
 agusage
 ```
 
+### Update
+
+Run the install command again to update to the latest version.
+
 ### Manual Install
 
 1. **Download** from [Releases](https://github.com/TungCorn/antigravity-usage-checker/releases/latest)
@@ -43,6 +47,14 @@ agusage
 ### Output
 
 ![Screenshot](assets/image.png)
+
+### Features ✨
+
+- 🎨 **Color-coded display** - Green when quota is healthy (>50%), yellow when moderate (>20%), red when low
+- 📊 **Smart total calculation** - Automatically detects and deduplicates shared quota pools
+- 🔄 **Unicode progress bars** - Beautiful █ and ░ characters for visual progress
+- ⚡ **Fast and lightweight** - Written in Go, single binary, no dependencies
+- 💾 **Offline cache** - Works even when Antigravity is not running
 
 ### Commands
 
@@ -81,6 +93,10 @@ Sau đó chạy:
 agusage
 ```
 
+### Cập nhật
+
+Chạy lại lệnh cài đặt để cập nhật lên phiên bản mới nhất.
+
 ### Cài thủ công
 
 1. **Tải** từ [Releases](https://github.com/TungCorn/antigravity-usage-checker/releases/latest)
@@ -96,6 +112,14 @@ agusage
 ### Kết quả
 
 ![Screenshot](assets/image.png)
+
+### Tính năng ✨
+
+- 🎨 **Màu sắc thông minh** - Xanh lá khi quota còn nhiều (>50%), vàng khi trung bình (>20%), đỏ khi sắp hết
+- 📊 **Tính tổng thông minh** - Tự động phát hiện và loại bỏ trùng lặp các quota pools dùng chung
+- 🔄 **Progress bar Unicode** - Ký tự █ và ░ đẹp mắt cho thanh tiến độ
+- ⚡ **Nhanh và nhẹ** - Viết bằng Go, binary đơn giản, không cần dependencies
+- 💾 **Cache offline** - Hoạt động ngay cả khi Antigravity không chạy
 
 ### Các lệnh
 

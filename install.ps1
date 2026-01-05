@@ -20,8 +20,19 @@ $localExe = Join-Path $PSScriptRoot "agusage.exe"
 
 if (Test-Path $localExe) {
     # Local install mode
-    Write-Host "Found local usage.exe, installing..." -ForegroundColor Cyan
+    Write-Host "Found local agusage.exe, installing..." -ForegroundColor Green
+    
+    # Check if updating
+    if (Test-Path $exePath) {
+        $oldVersion = (& $exePath --version 2>$null) -replace '.*v([0-9.]+).*', '$1'
+        Write-Host "Updating from version $oldVersion..." -ForegroundColor Yellow
+    }
+    
     Copy-Item $localExe $exePath -Force
+    
+    # Get new version
+    $newVersion = (& $exePath --version 2>$null) -replace '.*v([0-9.]+).*', '$1'
+    Write-Host "Installed version $newVersion" -ForegroundColor Green
 } else {
     # Remote install mode (download from GitHub)
     Write-Host "Fetching latest release..." -ForegroundColor Cyan

@@ -58,19 +58,49 @@ func showTable(data *api.UsageData, isCached bool) {
 	}
 	
 	// Table header
-	fmt.Printf("%s%-20s %6s %6s %6s %-15s %s%s\n", Bold,
-		"Model", "Used", "Limit", "Left", "Progress", "Reset", Reset)
+	fmt.Printf("%-22s %4s %5s %6s %-14s %s\n",
+		"Model", "Used", "Limit", "Left", "Progress", "Reset")
 	fmt.Println(strings.Repeat("─", 70))
+	
+	// Calculate totals with deduplication for shared quota pools
+	// Use a map to track unique quota pools by their Used/Limit/Remaining signature
+	type quotaKey struct {
+		Used      int
+		Limit     int
+		Remaining int
+	}
+	uniqueQuotas := make(map[quotaKey]bool)
+	
+	totalUsed := 0
+	totalLimit := 0
+	totalRemaining := 0
 	
 	// Model rows
 	for _, model := range data.Models {
-		color := getStatusColor(model.UsagePercent)
+		// Create a unique key for this quota pool
+		key := quotaKey{
+			Used:      model.Used,
+			Limit:     model.Limit,
+			Remaining: model.Remaining,
+		}
+		
+		// Only count this quota pool if we haven't seen it before
+		if !uniqueQuotas[key] {
+			uniqueQuotas[key] = true
+			totalUsed += model.Used
+			totalLimit += model.Limit
+			totalRemaining += model.Remaining
+		}
+		
+		// Color based on remaining percentage (not usage)
+		remainingPercent := 100 - model.UsagePercent
+		color := getRemainingColor(remainingPercent)
 		progressBar := createProgressBar(model.UsagePercent, 10)
 		resetStr := formatResetTime(model.ResetTime)
 		
-		fmt.Printf("%-20s %s%6d%s %6d %s%6d%s %-18s %s\n",
-			truncateString(model.ModelName, 20),
-			Magenta, model.Used, Reset,
+		fmt.Printf("%-22s %s%4d%s %5d %s%6d%s %-14s %s\n",
+			truncateString(model.ModelName, 22),
+			Cyan, model.Used, Reset,
 			model.Limit,
 			color, model.Remaining, Reset,
 			progressBar,
@@ -78,7 +108,18 @@ func showTable(data *api.UsageData, isCached bool) {
 		)
 	}
 	
-	// Footer
+	// Footer separator
+	fmt.Println(strings.Repeat("─", 70))
+	
+	// Total usage summary
+	totalUsagePercent := 0
+	if totalLimit > 0 {
+		totalUsagePercent = (totalUsed * 100) / totalLimit
+	}
+	totalRemainingPercent := 100 - totalUsagePercent
+	summaryColor := getRemainingColor(totalRemainingPercent)
+	fmt.Printf("%s📊 Total: %d/%d used (%d%% remaining)%s\n",
+		summaryColor, totalUsed, totalLimit, totalRemainingPercent, Reset)
 	fmt.Println(strings.Repeat("─", 70))
 	
 	// Tier and credits
@@ -109,9 +150,11 @@ func createProgressBar(percent, width int) string {
 	filled := width * percent / 100
 	empty := width - filled
 	
-	color := getStatusColor(percent)
+	// Color based on remaining percentage
+	remainingPercent := 100 - percent
+	color := getRemainingColor(remainingPercent)
 	
-	bar := fmt.Sprintf("%s%s%s%s %d%%",
+	bar := fmt.Sprintf("%s%s%s%s %2d%%",
 		color,
 		strings.Repeat("█", filled),
 		strings.Repeat("░", empty),
@@ -128,6 +171,18 @@ func getStatusColor(percent int) string {
 	case percent < 50:
 		return Green
 	case percent < 80:
+		return Yellow
+	default:
+		return Red
+	}
+}
+
+// getRemainingColor returns the appropriate color based on remaining percentage.
+func getRemainingColor(remainingPercent int) string {
+	switch {
+	case remainingPercent > 50:
+		return Green
+	case remainingPercent > 20:
 		return Yellow
 	default:
 		return Red
