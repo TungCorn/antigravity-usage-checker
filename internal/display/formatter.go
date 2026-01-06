@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/TungCorn/antigravity-usage-checker/internal/api"
+	"github.com/tungcorn/antigravity-usage-checker/internal/api"
 )
 
 const (

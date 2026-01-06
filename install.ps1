@@ -1,5 +1,5 @@
 # Antigravity Usage Checker - Install Script
-# Run: iwr https://raw.githubusercontent.com/TungCorn/antigravity-usage-checker/main/install.ps1 -OutFile $env:TEMP\install.ps1; . $env:TEMP\install.ps1
+# Run: iwr https://raw.githubusercontent.com/tungcorn/antigravity-usage-checker/main/install.ps1 -OutFile $env:TEMP\install.ps1; . $env:TEMP\install.ps1
 # Install specific version: ... $env:TEMP\install.ps1 -Version 0.5.0
 
 param(
@@ -17,7 +17,7 @@ if ($Version -eq "latest") {
 # Define paths
 $installDir = "$env:LOCALAPPDATA\agusage"
 $exePath = "$installDir\agusage.exe"
-$repo = "TungCorn/antigravity-usage-checker"
+$repo = "tungcorn/antigravity-usage-checker"
 
 # Create install directory
 if (!(Test-Path $installDir)) {

@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/TungCorn/antigravity-usage-checker/internal/api"
-	"github.com/TungCorn/antigravity-usage-checker/internal/auth"
-	"github.com/TungCorn/antigravity-usage-checker/internal/cache"
-	"github.com/TungCorn/antigravity-usage-checker/internal/discovery"
-	"github.com/TungCorn/antigravity-usage-checker/internal/display"
+	"github.com/tungcorn/antigravity-usage-checker/internal/api"
+	"github.com/tungcorn/antigravity-usage-checker/internal/auth"
+	"github.com/tungcorn/antigravity-usage-checker/internal/cache"
+	"github.com/tungcorn/antigravity-usage-checker/internal/discovery"
+	"github.com/tungcorn/antigravity-usage-checker/internal/display"
 )
 
 const (

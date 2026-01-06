@@ -7,7 +7,7 @@
 ![Windows](https://img.shields.io/badge/Windows-0078D6?style=flat&logo=windows&logoColor=white)
 ![macOS](https://img.shields.io/badge/macOS-000000?style=flat&logo=apple&logoColor=white)
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black)
-[![CI](https://github.com/TungCorn/antigravity-usage-checker/actions/workflows/ci.yml/badge.svg)](https://github.com/TungCorn/antigravity-usage-checker/actions/workflows/ci.yml)
+[![CI](https://github.com/tungcorn/antigravity-usage-checker/actions/workflows/ci.yml/badge.svg)](https://github.com/tungcorn/antigravity-usage-checker/actions/workflows/ci.yml)
 
 ## 🇬🇧 English
 
@@ -15,12 +15,12 @@
 
 **Windows (PowerShell):**
 ```powershell
-iwr https://raw.githubusercontent.com/TungCorn/antigravity-usage-checker/main/install.ps1 -OutFile $env:TEMP\install.ps1; . $env:TEMP\install.ps1
+iwr https://raw.githubusercontent.com/tungcorn/antigravity-usage-checker/main/install.ps1 -OutFile $env:TEMP\install.ps1; . $env:TEMP\install.ps1
 ```
 
 **macOS / Linux (Bash):**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/TungCorn/antigravity-usage-checker/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/tungcorn/antigravity-usage-checker/main/install.sh | bash
 ```
 
 Then run:
@@ -36,17 +36,17 @@ Run the install command again to update to the latest version.
 
 **Windows:**
 ```powershell
-iwr https://raw.githubusercontent.com/TungCorn/antigravity-usage-checker/main/install.ps1 -OutFile $env:TEMP\install.ps1; . $env:TEMP\install.ps1 -Version 0.5.0
+iwr https://raw.githubusercontent.com/tungcorn/antigravity-usage-checker/main/install.ps1 -OutFile $env:TEMP\install.ps1; . $env:TEMP\install.ps1 -Version 0.5.0
 ```
 
 **macOS / Linux:**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/TungCorn/antigravity-usage-checker/main/install.sh | bash -s -- -v 0.5.0
+curl -fsSL https://raw.githubusercontent.com/tungcorn/antigravity-usage-checker/main/install.sh | bash -s -- -v 0.5.0
 ```
 
 ### Manual Install
 
-1. **Download** from [Releases](https://github.com/TungCorn/antigravity-usage-checker/releases/latest)
+1. **Download** from [Releases](https://github.com/tungcorn/antigravity-usage-checker/releases/latest)
    - Windows: `antigravity-usage-checker-windows-amd64.zip`
    - macOS Intel: `antigravity-usage-checker-darwin-amd64.tar.gz`
    - macOS Apple Silicon: `antigravity-usage-checker-darwin-arm64.tar.gz`
@@ -92,12 +92,12 @@ agusage --help   # Help
 
 **Windows (PowerShell):**
 ```powershell
-iwr https://raw.githubusercontent.com/TungCorn/antigravity-usage-checker/main/install.ps1 -OutFile $env:TEMP\install.ps1; . $env:TEMP\install.ps1
+iwr https://raw.githubusercontent.com/tungcorn/antigravity-usage-checker/main/install.ps1 -OutFile $env:TEMP\install.ps1; . $env:TEMP\install.ps1
 ```
 
 **macOS / Linux (Bash):**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/TungCorn/antigravity-usage-checker/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/tungcorn/antigravity-usage-checker/main/install.sh | bash
 ```
 
 Sau đó chạy:
@@ -113,17 +113,17 @@ Chạy lại lệnh cài đặt để cập nhật lên phiên bản mới nhấ
 
 **Windows:**
 ```powershell
-iwr https://raw.githubusercontent.com/TungCorn/antigravity-usage-checker/main/install.ps1 -OutFile $env:TEMP\install.ps1; . $env:TEMP\install.ps1 -Version 0.5.0
+iwr https://raw.githubusercontent.com/tungcorn/antigravity-usage-checker/main/install.ps1 -OutFile $env:TEMP\install.ps1; . $env:TEMP\install.ps1 -Version 0.5.0
 ```
 
 **macOS / Linux:**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/TungCorn/antigravity-usage-checker/main/install.sh | bash -s -- -v 0.5.0
+curl -fsSL https://raw.githubusercontent.com/tungcorn/antigravity-usage-checker/main/install.sh | bash -s -- -v 0.5.0
 ```
 
 ### Cài thủ công
 
-1. **Tải** từ [Releases](https://github.com/TungCorn/antigravity-usage-checker/releases/latest)
+1. **Tải** từ [Releases](https://github.com/tungcorn/antigravity-usage-checker/releases/latest)
    - Windows: `antigravity-usage-checker-windows-amd64.zip`
    - macOS Intel: `antigravity-usage-checker-darwin-amd64.tar.gz`
    - macOS Apple Silicon: `antigravity-usage-checker-darwin-arm64.tar.gz`

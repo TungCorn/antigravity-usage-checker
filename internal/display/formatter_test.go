@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/TungCorn/antigravity-usage-checker/internal/api"
+	"github.com/tungcorn/antigravity-usage-checker/internal/api"
 )
 
 // TestCreateProgressBar tests progress bar generation.

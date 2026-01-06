@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/TungCorn/antigravity-usage-checker/internal/api"
+	"github.com/tungcorn/antigravity-usage-checker/internal/api"
 )
 
 const cacheFileName = "usage_cache.json"

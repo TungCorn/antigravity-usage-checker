@@ -1,6 +1,6 @@
 #!/bin/bash
 # Antigravity Usage Checker - Installation Script for Linux/macOS
-# Usage: curl -fsSL https://raw.githubusercontent.com/TungCorn/antigravity-usage-checker/main/install.sh | bash
+# Usage: curl -fsSL https://raw.githubusercontent.com/tungcorn/antigravity-usage-checker/main/install.sh | bash
 # Install specific version: curl -fsSL ... | bash -s -- -v 0.5.0
 
 set -e
@@ -61,7 +61,7 @@ esac
 # Get version
 if [ -z "$VERSION" ]; then
     echo "📥 Fetching latest release..."
-    INSTALL_VERSION=$(curl -s https://api.github.com/repos/TungCorn/antigravity-usage-checker/releases/latest | grep '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/')
+    INSTALL_VERSION=$(curl -s https://api.github.com/repos/tungcorn/antigravity-usage-checker/releases/latest | grep '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/')
     
     if [ -z "$INSTALL_VERSION" ]; then
         echo -e "${YELLOW}⚠️  Could not fetch latest version, using v0.3.0${NC}"
@@ -75,7 +75,7 @@ fi
 echo "📦 Version: $INSTALL_VERSION"
 
 # Download URL
-DOWNLOAD_URL="https://github.com/TungCorn/antigravity-usage-checker/releases/download/${INSTALL_VERSION}/antigravity-usage-checker-${OS}-${ARCH}.tar.gz"
+DOWNLOAD_URL="https://github.com/tungcorn/antigravity-usage-checker/releases/download/${INSTALL_VERSION}/antigravity-usage-checker-${OS}-${ARCH}.tar.gz"
 
 # Create temp directory
 TMP_DIR=$(mktemp -d)
