@@ -1,9 +1,18 @@
 # Antigravity Usage Checker - Install Script
-# Run: iwr https://raw.githubusercontent.com/TungCorn/antigravity-usage-checker/main/install.ps1 -useb | iex
+# Run: iwr https://raw.githubusercontent.com/TungCorn/antigravity-usage-checker/main/install.ps1 -OutFile $env:TEMP\install.ps1; . $env:TEMP\install.ps1
+# Install specific version: ... $env:TEMP\install.ps1 -Version 0.5.0
+
+param(
+    [string]$Version = "latest"
+)
 
 $ErrorActionPreference = "Stop"
 
-Write-Host "Installing Antigravity Usage Checker..." -ForegroundColor Cyan
+if ($Version -eq "latest") {
+    Write-Host "Installing Antigravity Usage Checker (latest)..." -ForegroundColor Cyan
+} else {
+    Write-Host "Installing Antigravity Usage Checker v$Version..." -ForegroundColor Cyan
+}
 
 # Define paths
 $installDir = "$env:LOCALAPPDATA\agusage"
@@ -35,14 +44,18 @@ if (Test-Path $localExe) {
     Write-Host "Installed version $newVersion" -ForegroundColor Green
 } else {
     # Remote install mode (download from GitHub)
-    Write-Host "Fetching latest release..." -ForegroundColor Cyan
+    Write-Host "Fetching release..." -ForegroundColor Cyan
     
     try {
-        $latestUrl = "https://github.com/$repo/releases/latest/download/antigravity-usage-checker-windows.zip"
+        if ($Version -eq "latest") {
+            $downloadUrl = "https://github.com/$repo/releases/latest/download/antigravity-usage-checker-windows-amd64.zip"
+        } else {
+            $downloadUrl = "https://github.com/$repo/releases/download/v$Version/antigravity-usage-checker-windows-amd64.zip"
+        }
         $zipPath = "$env:TEMP\agusage.zip"
         
         Write-Host "Downloading..." -ForegroundColor Cyan
-        Invoke-WebRequest -Uri $latestUrl -OutFile $zipPath
+        Invoke-WebRequest -Uri $downloadUrl -OutFile $zipPath
         
         Write-Host "Extracting..." -ForegroundColor Cyan
         Expand-Archive -Path $zipPath -DestinationPath $env:TEMP -Force

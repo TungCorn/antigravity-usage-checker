@@ -32,6 +32,18 @@ agusage
 
 Run the install command again to update to the latest version.
 
+### Install Specific Version
+
+**Windows:**
+```powershell
+iwr https://raw.githubusercontent.com/TungCorn/antigravity-usage-checker/main/install.ps1 -OutFile $env:TEMP\install.ps1; . $env:TEMP\install.ps1 -Version 0.5.0
+```
+
+**macOS / Linux:**
+```bash
+curl -fsSL https://raw.githubusercontent.com/TungCorn/antigravity-usage-checker/main/install.sh | bash -s -- -v 0.5.0
+```
+
 ### Manual Install
 
 1. **Download** from [Releases](https://github.com/TungCorn/antigravity-usage-checker/releases/latest)
@@ -96,6 +108,18 @@ agusage
 ### Cập nhật
 
 Chạy lại lệnh cài đặt để cập nhật lên phiên bản mới nhất.
+
+### Cài đặt phiên bản cụ thể
+
+**Windows:**
+```powershell
+iwr https://raw.githubusercontent.com/TungCorn/antigravity-usage-checker/main/install.ps1 -OutFile $env:TEMP\install.ps1; . $env:TEMP\install.ps1 -Version 0.5.0
+```
+
+**macOS / Linux:**
+```bash
+curl -fsSL https://raw.githubusercontent.com/TungCorn/antigravity-usage-checker/main/install.sh | bash -s -- -v 0.5.0
+```
 
 ### Cài thủ công
 

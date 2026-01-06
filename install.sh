@@ -1,6 +1,7 @@
 #!/bin/bash
 # Antigravity Usage Checker - Installation Script for Linux/macOS
 # Usage: curl -fsSL https://raw.githubusercontent.com/TungCorn/antigravity-usage-checker/main/install.sh | bash
+# Install specific version: curl -fsSL ... | bash -s -- -v 0.5.0
 
 set -e
 
@@ -9,6 +10,20 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
+
+# Parse arguments
+VERSION=""
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -v|--version)
+            VERSION="$2"
+            shift 2
+            ;;
+        *)
+            shift
+            ;;
+    esac
+done
 
 echo -e "${GREEN}🚀 Antigravity Usage Checker - Installer${NC}"
 echo "=========================================="
@@ -43,19 +58,24 @@ case $OS in
         ;;
 esac
 
-# Get latest version
-echo "📥 Fetching latest release..."
-LATEST_VERSION=$(curl -s https://api.github.com/repos/TungCorn/antigravity-usage-checker/releases/latest | grep '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/')
-
-if [ -z "$LATEST_VERSION" ]; then
-    echo -e "${YELLOW}⚠️  Could not fetch latest version, using v0.3.0${NC}"
-    LATEST_VERSION="v0.3.0"
+# Get version
+if [ -z "$VERSION" ]; then
+    echo "📥 Fetching latest release..."
+    INSTALL_VERSION=$(curl -s https://api.github.com/repos/TungCorn/antigravity-usage-checker/releases/latest | grep '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/')
+    
+    if [ -z "$INSTALL_VERSION" ]; then
+        echo -e "${YELLOW}⚠️  Could not fetch latest version, using v0.3.0${NC}"
+        INSTALL_VERSION="v0.3.0"
+    fi
+else
+    INSTALL_VERSION="v$VERSION"
+    echo "📥 Installing specific version: $INSTALL_VERSION"
 fi
 
-echo "📦 Latest version: $LATEST_VERSION"
+echo "📦 Version: $INSTALL_VERSION"
 
 # Download URL
-DOWNLOAD_URL="https://github.com/TungCorn/antigravity-usage-checker/releases/download/${LATEST_VERSION}/antigravity-usage-checker-${OS}-${ARCH}.tar.gz"
+DOWNLOAD_URL="https://github.com/TungCorn/antigravity-usage-checker/releases/download/${INSTALL_VERSION}/antigravity-usage-checker-${OS}-${ARCH}.tar.gz"
 
 # Create temp directory
 TMP_DIR=$(mktemp -d)
