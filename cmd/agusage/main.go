@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	Version = "0.5.0"
+	Version = "0.5.2"
 	AppName = "Antigravity Usage Checker"
 )
 
