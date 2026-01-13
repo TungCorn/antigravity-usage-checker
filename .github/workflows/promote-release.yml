@@ -1,0 +1,70 @@
+name: Promote to Latest
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to promote (e.g., v1.0.0)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  promote:
+    name: Promote Pre-release to Latest
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Validate tag format
+        run: |
+          if [[ ! "${{ github.event.inputs.tag }}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+.*$ ]]; then
+            echo "❌ Invalid tag format. Expected format: v1.0.0 or v1.0.0-rc.1"
+            exit 1
+          fi
+          echo "✅ Tag format is valid: ${{ github.event.inputs.tag }}"
+
+      - name: Check if release exists
+        id: check_release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          RELEASE_INFO=$(gh api repos/${{ github.repository }}/releases/tags/${{ github.event.inputs.tag }} 2>/dev/null || echo "NOT_FOUND")
+          
+          if [[ "$RELEASE_INFO" == "NOT_FOUND" ]]; then
+            echo "❌ Release with tag ${{ github.event.inputs.tag }} not found"
+            exit 1
+          fi
+          
+          IS_PRERELEASE=$(echo "$RELEASE_INFO" | jq -r '.prerelease')
+          RELEASE_ID=$(echo "$RELEASE_INFO" | jq -r '.id')
+          RELEASE_NAME=$(echo "$RELEASE_INFO" | jq -r '.name')
+          
+          echo "release_id=$RELEASE_ID" >> $GITHUB_OUTPUT
+          echo "is_prerelease=$IS_PRERELEASE" >> $GITHUB_OUTPUT
+          echo "release_name=$RELEASE_NAME" >> $GITHUB_OUTPUT
+          
+          echo "📦 Found release: $RELEASE_NAME (ID: $RELEASE_ID)"
+          echo "   Pre-release: $IS_PRERELEASE"
+
+      - name: Promote to latest
+        if: steps.check_release.outputs.is_prerelease == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "🚀 Promoting ${{ github.event.inputs.tag }} to latest release..."
+          
+          gh api \
+            --method PATCH \
+            repos/${{ github.repository }}/releases/${{ steps.check_release.outputs.release_id }} \
+            -f prerelease=false \
+            -f make_latest=true
+          
+          echo "✅ Successfully promoted ${{ github.event.inputs.tag }} to latest!"
+
+      - name: Already latest
+        if: steps.check_release.outputs.is_prerelease == 'false'
+        run: |
+          echo "ℹ️ Release ${{ github.event.inputs.tag }} is already a stable release (not a pre-release)"
+          echo "   No action needed."
