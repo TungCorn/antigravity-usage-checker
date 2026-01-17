@@ -118,6 +118,25 @@ jobs:
             echo "body_file=release_body.md" >> $GITHUB_OUTPUT
             echo "📄 Release body extracted"
           fi
+          
+      - name: Get previous tag
+        id: prev_tag
+        run: |
+          PREV_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+          echo "prev_tag=$PREV_TAG" >> $GITHUB_OUTPUT
+          echo "📌 Previous tag: $PREV_TAG"
+          
+      - name: Append Full Changelog link
+        run: |
+          TAG="${{ steps.version.outputs.tag }}"
+          PREV="${{ steps.prev_tag.outputs.prev_tag }}"
+          
+          if [ -n "$PREV" ] && [ -f "release_body.md" ]; then
+            echo "" >> release_body.md
+            echo "---" >> release_body.md
+            echo "" >> release_body.md
+            echo "**Full Changelog**: https://github.com/${{ github.repository }}/compare/${PREV}...${TAG}" >> release_body.md
+          fi
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
