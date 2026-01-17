@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.0.0] Enhanced Reset Time Display
+
+### Added
+- Display exact reset time alongside countdown (e.g., "1h 12m (01:40)")
+
+### Changed
+- Improved reset time display for better user experience
+
+---
+
 ## [v0.5.2] Refactoring & Bug Fixes
 
 ### Changed

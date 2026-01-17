@@ -202,7 +202,7 @@ func formatTime(t time.Time) string {
 	return t.Format("15:04:05 02/01/2006")
 }
 
-// formatResetTime converts an ISO timestamp to relative time (e.g., "in 2h 30m").
+// formatResetTime converts an ISO timestamp to relative time with exact time (e.g., "1h 30m (14:30)").
 func formatResetTime(resetTimeStr string) string {
 	if resetTimeStr == "" {
 		return "-"
@@ -222,12 +222,16 @@ func formatResetTime(resetTimeStr string) string {
 		return Dim + "reset" + Reset
 	}
 	
-	// Format as relative time
+	// Convert reset time to local timezone for display
+	localResetTime := resetTime.Local()
+	exactTime := localResetTime.Format("15:04")
+	
+	// Format as relative time with exact time
 	hours := int(diff.Hours())
 	minutes := int(diff.Minutes()) % 60
 	
 	if hours > 0 {
-		return fmt.Sprintf("%s%dh %dm%s", Dim, hours, minutes, Reset)
+		return fmt.Sprintf("%s%dh %dm (%s)%s", Dim, hours, minutes, exactTime, Reset)
 	}
-	return fmt.Sprintf("%s%dm%s", Dim, minutes, Reset)
+	return fmt.Sprintf("%s%dm (%s)%s", Dim, minutes, exactTime, Reset)
 }
