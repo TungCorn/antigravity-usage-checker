@@ -94,24 +94,24 @@ jobs:
         run: |
           TAG="${{ steps.version.outputs.tag }}"
           
-          # Extract the title line: ## [v0.5.2] Title Here -> v0.5.2 Title Here
-          TITLE_LINE=$(grep -E "^## \[$TAG\]" CHANGELOG.md | head -1 || echo "")
+          # Extract the title line safe method
+          TITLE_LINE=$(grep -F "## [$TAG]" CHANGELOG.md | head -1 || echo "")
           
           if [ -z "$TITLE_LINE" ]; then
             echo "⚠️ No changelog entry found for $TAG, using tag as title"
             echo "title=$TAG" >> $GITHUB_OUTPUT
             echo "body=Release $TAG" >> $GITHUB_OUTPUT
           else
-            # Extract title: ## [v0.5.2] Title Here -> v0.5.2 Title Here
+            # Extract title
             RELEASE_TITLE=$(echo "$TITLE_LINE" | sed 's/^## \[\([^]]*\)\] */\1 /')
             echo "title=$RELEASE_TITLE" >> $GITHUB_OUTPUT
             echo "📝 Release title: $RELEASE_TITLE"
             
-            # Extract body: everything between this version header and the next ## or end of file
-            BODY=$(awk "/^## \[$TAG\]/{flag=1; next} /^## \[/{flag=0} flag" CHANGELOG.md)
+            # Extract body using safe string matching (no regex issues)
+            # flag=1 when line starts with "## [TAG]"
+            # flag=0 when line starts with "## ["
+            awk -v header="## [$TAG]" 'index($0, header) == 1 {flag=1; next} /^## \[/{flag=0} flag' CHANGELOG.md > release_body.md
             
-            # Write body to file to handle multiline
-            echo "$BODY" > release_body.md
             echo "body_file=release_body.md" >> $GITHUB_OUTPUT
             echo "📄 Release body extracted"
           fi
