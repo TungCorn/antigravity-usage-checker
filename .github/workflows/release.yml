@@ -135,6 +135,23 @@ jobs:
             echo "**Full Changelog**: https://github.com/${{ github.repository }}/compare/${PREV}...${TAG}" >> release_body.md
           fi
 
+      - name: Append Install Instructions
+        run: |
+          if [ -f "release_body.md" ]; then
+            echo "" >> release_body.md
+            echo "### 🚀 Quick Install" >> release_body.md
+            echo "" >> release_body.md
+            echo "**Windows (PowerShell):**" >> release_body.md
+            echo "\`\`\`powershell" >> release_body.md
+            echo "iwr https://raw.githubusercontent.com/tungcorn/antigravity-usage-checker/main/install.ps1 -OutFile \$env:TEMP\install.ps1; . \$env:TEMP\install.ps1" >> release_body.md
+            echo "\`\`\`" >> release_body.md
+            echo "" >> release_body.md
+            echo "**macOS / Linux (Bash):**" >> release_body.md
+            echo "\`\`\`bash" >> release_body.md
+            echo "curl -fsSL https://raw.githubusercontent.com/tungcorn/antigravity-usage-checker/main/install.sh | bash" >> release_body.md
+            echo "\`\`\`" >> release_body.md
+          fi
+
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
