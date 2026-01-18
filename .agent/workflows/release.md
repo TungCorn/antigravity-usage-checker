@@ -1,52 +1,52 @@
 ---
-description: Tạo release mới với changelog và test đầy đủ
+description: Create a new release with changelog and verification
 ---
 
-# Workflow Release
+# Release Workflow
 
-Thực hiện các bước sau để tạo release mới:
+Follow these steps to create a new release:
 
-## 1. Xác nhận phiên bản mới
-- Hỏi user phiên bản mới là gì (ví dụ: v2.1.0)
-- Kiểm tra phiên bản mới nhất trong CHANGELOG.md để tránh trùng
+## 1. Confirm version
+- Ask user for the new version (e.g., v2.1.0)
+- Check the latest version in CHANGELOG.md to avoid duplicates
 
-## 2. Cập nhật CHANGELOG.md
-- Thêm section mới cho phiên bản ở đầu file (sau dòng header)
-- Format theo chuẩn đã có:
+## 2. Update CHANGELOG.md
+- Add new section for the version at the top (after header)
+- Use existing format:
 ```markdown
-## [vX.X.X] Tên release
+## [vX.X.X] Release Title
 
 ### Added
-- Tính năng mới
+- New features
 
 ### Changed
-- Thay đổi
+- Changes
 
 ### Fixed
-- Sửa lỗi
+- Bug fixes
 
 ---
 ```
-- Hỏi user mô tả các thay đổi nếu chưa biết
+- Ask user for change descriptions if not provided
 
-## 3. Build thử
+## 3. Build verification
 // turbo
-- Chạy lệnh: `go build -o agusage.exe ./cmd/agusage/`
-- Đảm bảo build thành công
-- Xóa file build thử sau khi xong
+- Run: `go build -o agusage.exe ./cmd/agusage/`
+- Ensure build succeeds
+- Remove test build file after verification
 
 ## 4. Commit changes
-- Stage tất cả thay đổi: `git add .`
-- Commit với message: `chore: prepare release vX.X.X`
+- Stage all changes: `git add .`
+- Commit with message: `chore: prepare release vX.X.X`
 
-## 5. Tạo tag và push
+## 5. Create tag and push
 // turbo
-- Tạo tag: `git tag vX.X.X`
+- Create tag: `git tag vX.X.X`
 // turbo
 - Push code: `git push origin main`
 // turbo
 - Push tag: `git push origin vX.X.X`
 
-## 6. Xác nhận hoàn thành
-- Thông báo user workflow đã hoàn thành
-- Cung cấp link đến GitHub Actions để theo dõi build: https://github.com/tungcorn/antigravity-usage-checker/actions
+## 6. Confirm completion
+- Notify user that workflow is complete
+- Provide link to GitHub Actions: https://github.com/tungcorn/antigravity-usage-checker/actions
