@@ -1,5 +1,7 @@
 ﻿# Antigravity Usage Checker
 
+🌐 [🇻🇳 Tiếng Việt](#vietnamese) | [🇬🇧 English](#english)
+
 🚀 Check your Antigravity AI usage quota from terminal
 
 ![Version](https://img.shields.io/github/v/release/tungcorn/antigravity-usage-checker)
@@ -34,7 +36,7 @@ This tool is designed to be transparent and safe:
 > **Note**: This tool only reads publicly available process information and communicates with localhost. No external network requests are made.
 
 ---
-
+<a id="english"></a>
 ## 🇬🇧 English
 
 ### Quick Install
@@ -115,7 +117,7 @@ agusage --help   # Help
 | Linux | ✅ CI tested |
 
 ---
-
+<a id="vietnamese"></a>
 ## 🇻🇳 Tiếng Việt
 
 ### Cài đặt nhanh
